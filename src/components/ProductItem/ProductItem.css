@@ -1,0 +1,32 @@
+.products__item {
+	width: 176px;
+	height: 302px;
+	background-color: #fff;
+	border: 1px solid #efefef;
+	padding: 20px 17px;
+}
+.products__price {
+	display: block;
+	margin-top: 69px;
+	font-size: 18px;
+}
+.products__name {
+	margin-top: 10px;
+	margin-bottom: 0;
+	line-height: 18px;
+}
+.products__price > span {
+	font-size: 13px;
+}
+.products__weight {
+	text-align: end;
+	color: #B4B4B4;
+	font-size: 14px;
+}
+.products__picture {
+	background: url(../../imgs/product_img.jpg) center no-repeat;
+	background-size: cover;
+	width: 150px;
+	height: 150px;
+	margin: 0 auto;
+}

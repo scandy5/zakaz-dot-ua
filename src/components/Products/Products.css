@@ -1,0 +1,11 @@
+.products {
+	background-color: #F9FDF9;
+}
+.products__title {
+	margin: 30px;
+}
+.products__items {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	margin: 30px;
+}
