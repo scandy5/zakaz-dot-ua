@@ -1,0 +1,7 @@
+*{
+	font-family: 'Ubuntu';
+}
+.main {
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+}
