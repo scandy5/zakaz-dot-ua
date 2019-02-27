@@ -7,12 +7,14 @@ export class Sidebar extends React.Component {
 			<section className="sidebar">
 				<h2 className="sidebar__title">Товари</h2>
 				<div className="sidebar__category-container">
-					{this.props.categories.map((category => {
-						return <p className="sidebar__category">{category.title}</p>
-					}))}
+					{this.props.categories
+						.filter(category => category.title === 'Пекарня')
+						.map(category => <p className="sidebar__category sidebar__category_active">{category.title}</p>)}
+					{this.props.categories
+						.filter(category => category.title !== 'Пекарня')
+						.map(category => <p className="sidebar__category">{category.title}</p>)}
 				</div>
 			</section>
 		)
 	}
-
 }

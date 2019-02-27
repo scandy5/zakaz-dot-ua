@@ -15,38 +15,39 @@ class App extends Component {
 			products: [],
 			selectedCategory: '',
 			// cart: {}
-		}
+		};
 
 		this.backend = new AppBackend();
 	}
 
 	async componentDidMount() {
-		this.getCategories();
 		this.getProducts();
+		this.getCategories();
 	}
 
 	getCategories = async () => {
-		const categories = await this.backend.getCategory({})
+		const categories = await this.backend.getCategory()
 
 		this.setState({ categories });
 	}
 
 	getProducts = async () => {
-		const products = await this.backend.getProducts({})
+		const products = await this.backend.getProducts()
 
 		this.setState({ products })
 	}
 
-	// onCategoryChange(selectedCategory) {
-	// 	this.setState({
-	// 		selectedCategory
-	// 	}) //() => {
-	// 	// 	// TODO load new products
-	// 	// });
-	// }
+	onCategoryChange(selectedCategory) {
+		this.setState({
+			selectedCategory
+		})
+
+		this.getProducts()
+	}
 
 	render() {
 		// const {}
+		const categoryTitle = this.state.categories.filter(category => category.title === "Пекарня").map(category => category.title)
 
 		return (
 			<div className="container">
@@ -55,7 +56,7 @@ class App extends Component {
 					<Sidebar categories={this.state.categories} /*
 						selected={this.state.selectedCategory}
 						onChange={this.onCategoryChange} *//>
-					<Products products={this.state.products} />
+					<Products products={this.state.products} title={categoryTitle}/>
 				</main>
 			</div>
 
