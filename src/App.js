@@ -38,22 +38,22 @@ class App extends Component {
 	}
 
 	getProducts = async () => {
-		const products = await this.backend.getProducts();
+		const products = await this.backend.getProducts({ selectedCategory: this.state.selectedCategory.id });
 
 		this.setState({
 			products: products.results
 		});
 	}
 
-	onCategoryChange(selectedCategory) {
-		this.setState({ selectedCategory }, () => {
-			this.getProducts(selectedCategory);
+	onCategoryChange = (selectedCategory) => {
+		this.setState({ selectedCategory }, async () => {
+			this.getProducts();
 		});
+		console.log(selectedCategory)
 	}
 
 	render() {
-		// const {}
-		const categoryTitle = this.state.categories.filter(category => category.title === "Пекарня").map(category => category.title)
+		const categoryTitle = this.state.categories.filter(category => category.title === 'Пекарня').map(category => category.title)
 
 		return (
 			<div className="container">

@@ -8,9 +8,12 @@ export class AppBackend {
 			.then((response) => response.json());
 	}
 
-	getProducts({category}) {
-		return fetch(`${this.baseUrl}${category}/products/`)
+	getProducts({selectedCategory}) {
+		console.log(selectedCategory)
+		return fetch(`${this.baseUrl}${selectedCategory}/products/`)
 			.then((response) => response.json());
 	}
+
+	
 }
 
