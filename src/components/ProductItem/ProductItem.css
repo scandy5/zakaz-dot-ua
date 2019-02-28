@@ -4,6 +4,7 @@
 	background-color: #fff;
 	border: 1px solid #efefef;
 	padding: 20px 17px;
+	position: relative;
 }
 .products__price {
 	display: block;
@@ -14,6 +15,8 @@
 	margin-top: 10px;
 	margin-bottom: 0;
 	line-height: 18px;
+	max-width: 150px;
+	overflow: hidden;
 }
 .products__price > span {
 	font-size: 13px;
@@ -22,10 +25,16 @@
 	text-align: end;
 	color: #B4B4B4;
 	font-size: 14px;
+	position: absolute;
+	bottom: 10px;
+	right: 15px;
 }
-.products__picture {
-	background: url(../../imgs/product_img.jpg) center no-repeat;
-	background-size: cover;
+.products__picture{
+	display: flex;
+	justify-content: center;
+}
+.products__img {
+	display: block;
 	width: 150px;
 	height: 150px;
 	margin: 0 auto;

@@ -10,18 +10,21 @@ export class Products extends React.Component {
 	render() {
 		const { title } = this.props;
 
-		console.log(this.props.products);
-
 		return (
 			<section className="products">
 				<div className="products__container">
 					<h1 className="products__title">{title}</h1>
 					<div className="products__items">
-						{/* {
-							this.props.products.results.map((product) => {
-								return <ProductItem name={product.title}/>			
+						{
+							this.props.products.map((product) => {
+								return <ProductItem
+									name={product.title}
+									price={product.price}
+									weight={product.weight}
+									imgUrl={product.gallery[0].s150x150}
+									key={product.slug} />
 							})
-						} */}
+						}
 					</div>
 				</div>
 			</section>

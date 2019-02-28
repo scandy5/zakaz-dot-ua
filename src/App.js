@@ -21,28 +21,34 @@ class App extends Component {
 	}
 
 	async componentDidMount() {
-		this.getProducts();
-		this.getCategories();
+		const categories = await this.backend.getCategory()
+
+		this.setState({
+			selectedCategory: categories[0],
+			categories
+		});
+
+		this.getProducts(categories[0]);
 	}
 
 	getCategories = async () => {
-		const categories = await this.backend.getCategory()
+		const categories = await this.backend.getCategory();
 
 		this.setState({ categories });
 	}
 
 	getProducts = async () => {
-		const products = await this.backend.getProducts()
+		const products = await this.backend.getProducts();
 
-		this.setState({ products })
+		this.setState({
+			products: products.results
+		});
 	}
 
 	onCategoryChange(selectedCategory) {
-		this.setState({
-			selectedCategory
-		})
-
-		this.getProducts()
+		this.setState({ selectedCategory }, () => {
+			this.getProducts(selectedCategory);
+		});
 	}
 
 	render() {
@@ -53,10 +59,10 @@ class App extends Component {
 			<div className="container">
 				<Header />
 				<main className="main">
-					<Sidebar categories={this.state.categories} /*
+					<Sidebar categories={this.state.categories}
 						selected={this.state.selectedCategory}
-						onChange={this.onCategoryChange} *//>
-					<Products products={this.state.products} title={categoryTitle}/>
+						onChange={this.onCategoryChange} />
+					<Products products={this.state.products} title={categoryTitle} />
 				</main>
 			</div>
 

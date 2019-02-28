@@ -7,16 +7,18 @@ export class ProductItem extends React.Component {
 	}
 
 	render() {
-		const { name, price, weight } = this.props;
+		const { name, price, weight, imgUrl } = this.props;
 
 		return (
 			<div className="products__item">
-				<div className="products__picture" />
-				<span className="products__price">39.40 <span>грн</span></span>
+				<div className="products__picture">
+					<img src={imgUrl} alt={name} className="product__img"/>
+				</div>
+				<span className="products__price">{price}<span> грн</span></span>
 				<p className="products__name">
-					some title some title some title {name}
+					{name}
 				</p>
-				<div className="products__weight">400г</div>
+				<div className="products__weight">{weight} г</div>
 			</div>
 		)
 	}
