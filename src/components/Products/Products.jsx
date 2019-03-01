@@ -3,10 +3,6 @@ import { ProductItem } from '../ProductItem';
 import './Products.css';
 
 export class Products extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		const { title } = this.props;
 

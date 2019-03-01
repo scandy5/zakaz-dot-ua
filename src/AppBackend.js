@@ -13,7 +13,5 @@ export class AppBackend {
 		return fetch(`${this.baseUrl}${selectedCategory}/products/`)
 			.then((response) => response.json());
 	}
-
-	
 }
 

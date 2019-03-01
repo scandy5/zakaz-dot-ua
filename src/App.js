@@ -13,22 +13,23 @@ class App extends Component {
 		this.state = {
 			categories: [],
 			products: [],
-			selectedCategory: '',
-			// cart: {}
+			selectedCategory: ''
 		};
 
 		this.backend = new AppBackend();
 	}
 
 	async componentDidMount() {
-		const categories = await this.backend.getCategory()
+		const categories = await this.backend.getCategory();
 
 		this.setState({
 			selectedCategory: categories[0],
 			categories
 		});
 
-		this.getProducts(categories[0]);
+		console.log(this.state.selectedCategory.id);
+		
+		this.getProducts();
 	}
 
 	getCategories = async () => {
@@ -40,16 +41,21 @@ class App extends Component {
 	getProducts = async () => {
 		const products = await this.backend.getProducts({ selectedCategory: this.state.selectedCategory.id });
 
+		console.log(this.state.selectedCategory.id);
+		
 		this.setState({
 			products: products.results
 		});
 	}
 
 	onCategoryChange = (selectedCategory) => {
-		this.setState({ selectedCategory }, async () => {
+		selectedCategory = selectedCategory.target.dataset.id;
+
+		console.log(selectedCategory);
+		
+		this.setState({ selectedCategory }, () => {
 			this.getProducts();
 		});
-		console.log(selectedCategory)
 	}
 
 	render() {
@@ -61,7 +67,7 @@ class App extends Component {
 				<main className="main">
 					<Sidebar categories={this.state.categories}
 						selected={this.state.selectedCategory}
-						onChange={this.onCategoryChange} />
+						onCategoryChange={this.onCategoryChange} />
 					<Products products={this.state.products} title={categoryTitle} />
 				</main>
 			</div>
