@@ -12,19 +12,19 @@ self.__precacheManifest = [
     "url": "/zakaz-dot-ua/static/js/runtime~main.b04451fc.js"
   },
   {
-    "revision": "a7bbbb7a99ebce0b883b",
-    "url": "/zakaz-dot-ua/static/js/main.a7bbbb7a.chunk.js"
+    "revision": "a9f9ae506d9900699173",
+    "url": "/zakaz-dot-ua/static/js/main.a9f9ae50.chunk.js"
   },
   {
     "revision": "0b5d3b336e78236a891d",
     "url": "/zakaz-dot-ua/static/js/2.0b5d3b33.chunk.js"
   },
   {
-    "revision": "a7bbbb7a99ebce0b883b",
-    "url": "/zakaz-dot-ua/static/css/main.c120e385.chunk.css"
+    "revision": "a9f9ae506d9900699173",
+    "url": "/zakaz-dot-ua/static/css/main.6ec507d5.chunk.css"
   },
   {
-    "revision": "60b52864dc177c5506a0d68b92f177d5",
+    "revision": "37e297addb5b8a9a9e850433e70d542a",
     "url": "/zakaz-dot-ua/index.html"
   }
 ];
