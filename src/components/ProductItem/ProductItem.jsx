@@ -8,7 +8,7 @@ export class ProductItem extends React.Component {
 		return (
 			<div className="products__item">
 				{
-					cart.filter(element => element.title === name) === undefined ?
+					cart.find(element => element.title === name) === undefined ?
 						<button className="products__button" onClick={() => onAdd(name)}>
 							Додати
 							<div className="products__cart-img" />
