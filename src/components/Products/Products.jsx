@@ -4,8 +4,7 @@ import './Products.css';
 
 export class Products extends React.Component {
 	render() {
-		const { title } = this.props;
-
+		const { title, onAdd, amount, cart, onDelete } = this.props;
 		return (
 			<section className="products">
 				<div className="products__container">
@@ -18,7 +17,11 @@ export class Products extends React.Component {
 									price={product.price}
 									weight={product.weight}
 									imgUrl={product.gallery[0].s150x150}
-									key={product.slug} />
+									key={product.title} 
+									onAdd={onAdd}
+									onDelete={onDelete}
+									amount={amount}
+									cart={cart}/>
 							})
 						}
 					</div>

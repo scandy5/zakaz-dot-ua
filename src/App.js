@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Loader } from './components/Loader';
 import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
 import { Products } from './components/Products';
@@ -13,7 +14,9 @@ class App extends Component {
 		this.state = {
 			categories: [],
 			products: [],
-			selectedCategory: ''
+			selectedCategory: '',
+			isLoading: false,
+			cart: []
 		};
 
 		this.backend = new AppBackend();
@@ -23,12 +26,10 @@ class App extends Component {
 		const categories = await this.backend.getCategory();
 
 		this.setState({
-			selectedCategory: categories[0],
+			selectedCategory: categories[0].id,
 			categories
 		});
 
-		console.log(this.state.selectedCategory.id);
-		
 		this.getProducts();
 	}
 
@@ -39,20 +40,88 @@ class App extends Component {
 	}
 
 	getProducts = async () => {
-		const products = await this.backend.getProducts({ selectedCategory: this.state.selectedCategory.id });
+		this.setState({
+			isLoading: true
+		})
 
-		console.log(this.state.selectedCategory.id);
+		const products = await this.backend.getProducts({ selectedCategory: this.state.selectedCategory });
+
+		this.setState({
+			products: products.results,
+			isLoading: false
+		});
+	}
+
+	getAmount = () => {
+		let amount = 0;
+
+		this.state.card.push({
+			cart: [
+				{
+					amount: amount
+				}
+			]
+		})
+
+		this.setState({
+			cart: this.state.cart
+		})
+
+		console.log(this.state.cart)
+	}
+
+	deleteFromCart = (name) => {
+		const selectedProduct = this.state.products.find((product) => {
+			return product.title === name;
+		});
+
+		const sameProduct = this.state.cart.find((product) => {
+			return product.title === selectedProduct.title;
+		});
+
+
+		if (sameProduct.amount > 1) {
+			sameProduct.amount--;
+		} else {
+			this.state.cart.pop({
+				title: selectedProduct.title,
+				price: selectedProduct.price,
+				amount: 0
+			});
+		}
+
+		console.log(this.state.cart);
 		
 		this.setState({
-			products: products.results
+			cart: this.state.cart
+		});
+	}
+
+	addToCart = (name) => {
+		const selectedProduct = this.state.products.find((product) => {
+			return product.title === name;
+		});
+
+		const sameProduct = this.state.cart.find((product) => {
+			return product.title === selectedProduct.title;
+		});
+
+		if (sameProduct) {
+			sameProduct.amount++;
+		} else {
+			this.state.cart.push({
+				title: selectedProduct.title,
+				price: selectedProduct.price,
+				amount: 1
+			});
+		}
+
+		this.setState({
+			cart: this.state.cart
 		});
 	}
 
 	onCategoryChange = (selectedCategory) => {
-		selectedCategory = selectedCategory.target.dataset.id;
-
-		console.log(selectedCategory);
-		
 		this.setState({ selectedCategory }, () => {
 			this.getProducts();
 		});
@@ -63,15 +132,23 @@ class App extends Component {
 
 		return (
 			<div className="container">
-				<Header />
+				<Header cart={this.state.cart} />
 				<main className="main">
 					<Sidebar categories={this.state.categories}
 						selected={this.state.selectedCategory}
-						onCategoryChange={this.onCategoryChange} />
-					<Products products={this.state.products} title={categoryTitle} />
+						onCategoryChange={this.onCategoryChange}
+						selectedCategory={this.state.selectedCategory} />
+					{this.state.isLoading ?
+						<Loader />
+						:
+						<Products products={this.state.products}
+							title={categoryTitle}
+							onAdd={this.addToCart}
+							onDelete={this.deleteFromCart}
+							amount={this.getAmount}
+							cart={this.state.cart} />}
 				</main>
 			</div>
-
 		);
 	}
 }
