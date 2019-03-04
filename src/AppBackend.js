@@ -3,7 +3,7 @@ export class AppBackend {
 		this.baseUrl = 'https://staging-stores-api.zakaz.ua/stores/default/categories/';
 	}
 
-	getCategory() {
+	getCategories() {
 		return fetch(`${this.baseUrl}`)
 			.then((response) => response.json());
 	}

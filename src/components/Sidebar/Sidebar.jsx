@@ -19,6 +19,7 @@ export class Sidebar extends React.Component {
 								
 								return (
 									<p className={categoryClassname}
+										key={categories.id}
 										data-id={category.id}
 										onClick={() => onCategoryChange(category.id)}>
 										{category.title}

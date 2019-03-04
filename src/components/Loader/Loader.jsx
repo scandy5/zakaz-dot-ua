@@ -5,10 +5,10 @@ export class Loader extends React.Component {
 	render() {
 
 		return (
-			<div class="preloader-wrapper" id="preloader">
-				<div class="wrapper">
-					<div class="loader-circle"></div>
-					<div class="loader-bottom">LOADING</div>
+			<div className="preloader-wrapper" id="preloader">
+				<div className="wrapper">
+					<div className="loader-circle"></div>
+					<div className="loader-bottom">LOADING</div>
 				</div>
 			</div>
 		)

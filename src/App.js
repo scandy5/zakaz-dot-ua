@@ -23,7 +23,7 @@ class App extends Component {
 	}
 
 	async componentDidMount() {
-		const categories = await this.backend.getCategory();
+		const categories = await this.backend.getCategories();
 
 		this.setState({
 			selectedCategory: categories[0].id,
@@ -31,12 +31,6 @@ class App extends Component {
 		});
 
 		this.getProducts();
-	}
-
-	getCategories = async () => {
-		const categories = await this.backend.getCategory();
-
-		this.setState({ categories });
 	}
 
 	getProducts = async () => {
@@ -50,24 +44,6 @@ class App extends Component {
 			products: products.results,
 			isLoading: false
 		});
-	}
-
-	getAmount = () => {
-		let amount = 0;
-
-		this.state.card.push({
-			cart: [
-				{
-					amount: amount
-				}
-			]
-		})
-
-		this.setState({
-			cart: this.state.cart
-		})
-
-		console.log(this.state.cart)
 	}
 
 	deleteFromCart = (name) => {
@@ -89,8 +65,6 @@ class App extends Component {
 				amount: 0
 			});
 		}
-
-		console.log(this.state.cart);
 		
 		this.setState({
 			cart: this.state.cart
@@ -128,7 +102,7 @@ class App extends Component {
 	}
 
 	render() {
-		const categoryTitle = this.state.categories.filter(category => category.title === 'Пекарня').map(category => category.title)
+		const categoryTitle = this.state.categories.filter(category => category.id === this.state.selectedCategory).map(category => category.title)
 
 		return (
 			<div className="container">
@@ -137,7 +111,7 @@ class App extends Component {
 					<Sidebar categories={this.state.categories}
 						selected={this.state.selectedCategory}
 						onCategoryChange={this.onCategoryChange}
-						selectedCategory={this.state.selectedCategory} />
+						selectedCategory={this.state.selectedCategory}/>
 					{this.state.isLoading ?
 						<Loader />
 						:

@@ -1,4 +1,4 @@
-.products__item {
+.productItem {
 	min-width: 176px;
 	height: 302px;
 	background-color: #fff;
@@ -7,7 +7,7 @@
 	position: relative;
 	transition: all .25s ease;
 }
-.products__button {
+.productItem__button {
 	display: none;
 	position: absolute;
 	top:50%; 
@@ -22,13 +22,13 @@
 	cursor: pointer;
 	transition: all .25s ease;
 }
-.products__item:hover .products__button{
+.productItem:hover .productItem__button{
 	display: flex;
 }
-.products__button:hover {
+.productItem__button:hover {
 	background-color: #1D8A30;
 }
-.products__cart-img {
+.productItem__cart-img {
 	background: url(../../imgs/cart.svg) no-repeat;
 	width: 14px;
 	height: 11px;
@@ -36,7 +36,7 @@
 	margin: auto 0;
 	margin-left: 15px;
 }
-.products__cart-img:before {
+.productItem__cart-img:before {
 	content: "";
 	position: absolute;
 	top: 11.5px;
@@ -48,7 +48,7 @@
 	background: #fff;
 	border-radius: 50%;
 }
-.products__cart-img:after {
+.productItem__cart-img:after {
 	content: "";
 	position: absolute;
 	top: 11.5px;
@@ -60,22 +60,22 @@
 	background: #fff;
 	border-radius: 50%;
 }
-.products__price {
+.productItem__price {
 	display: block;
 	margin-top: 45px;
 	font-size: 18px;
 }
-.products__name {
+.productItem__name {
 	margin-top: 10px;
 	margin-bottom: 0;
 	line-height: 18px;
 	max-width: 150px;
 	overflow: hidden;
 }
-.products__price > span {
+.productItem__price > span {
 	font-size: 13px;
 }
-.products__weight {
+.productItem__weight {
 	text-align: end;
 	color: #B4B4B4;
 	font-size: 14px;
@@ -83,17 +83,17 @@
 	bottom: 10px;
 	right: 15px;
 }
-.products__picture{
+.productItem__picture{
 	height: 150px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-.products__img {
+.productItem__img {
 	display: block;
 	margin: 0 auto;
 }
-.products__amount-counter {
+.productItem__amount-counter {
 	position: absolute;
 	top:50%; 
 	left:50%; 
@@ -102,7 +102,7 @@
 	display: flex;
 	justify-content: space-between;
 }
-.products__button_counter {
+.productItem__button_counter {
 	border: 1px solid #45B759;
 	border-radius: 50%;
 	width: 40px;
@@ -111,12 +111,13 @@
 	font-size: 18px;
 	transition: all .25s ease;
 }
-.products__button_counter:hover {
+.productItem__button_counter:hover {
 	color: #fff;
 	background-color: #45B759;
 }
-.products__amount {
+.productItem__amount {
 	border: 1px solid #EFEFEF;
+	background: #fff;
 	width: 80px;
 	height: 40px;
 	display: flex;
