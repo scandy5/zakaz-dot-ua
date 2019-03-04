@@ -19,7 +19,7 @@ Demo you can see, if you click [here].
  - `npm run start` 
 
 ### Result:
-![home](https://github.com/scandy5/zakaz-dot-ua/blob/master/src/imgs/Home.jpg)
+![home](https://github.com/scandy5/zakaz-dot-ua/blob/master/src/imgs/HomePage.jpg)
 
 [here]: https://scandy5.github.io/zakaz-dot-ua
 
